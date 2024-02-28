@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package user;
+option go_package="./user";
+
+
+message UserInfo{
+  int64 Id=10;
+  string username=20;
+  string password=30;
+  Sex Sex=40;
+  string file=50;
+}
+
+enum Sex{
+  Default=0;
+  Man=20;
+  WoMan=30;
+}
+message UpdateReq {
+  UserInfo info = 1;
+}
+
+message UpdateRes {
+  UserInfo info = 1;
+}
+
+service User {
+  rpc Update(UpdateReq) returns(UpdateRes);
+}
